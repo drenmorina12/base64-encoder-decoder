@@ -18,6 +18,8 @@ base64_table = {
     '111100': '8', '111101': '9', '111110': '+', '111111': '/'
 }
 
+inverse_base64_table = {value: key for key, value in base64_table.items()}
+
 #konvertimi i tekstit ne ASCII-vlere, konvertimi ne blloqe binare 8-biteshe
 def text_to_binary(text):
     binary_text = ''.join('{0:08b}'.format(ord(x), 'b') for x in text)
