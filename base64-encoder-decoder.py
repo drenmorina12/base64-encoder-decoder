@@ -1,4 +1,3 @@
-
 base64_table = {
     '000000': 'A', '000001': 'B', '000010': 'C', '000011': 'D',
     '000100': 'E', '000101': 'F', '000110': 'G', '000111': 'H',
@@ -19,6 +18,8 @@ base64_table = {
 }
 
 inverse_base64_table = {value: key for key, value in base64_table.items()}
+
+my_text1 = "MUGIWARaaaaaaaaa"
 
 #konvertimi i tekstit ne ASCII-vlere, konvertimi ne blloqe binare 8-biteshe
 def text_to_binary(text):
@@ -72,3 +73,26 @@ def encode(text):
         base64_text += "=="
 
     return base64_text
+
+def decode(base65_text):
+    normal_text = ""
+    binary_values = []
+
+    for i in base65_text:
+        # print(i)
+        if i == '=':
+            continue
+        binary_values.append(inverse_base64_table[i])
+
+    binary_text = ''.join(binary_values)
+    # print(binary_text)
+    chunks = chunk_binary_for_decoding(binary_text)
+
+    for chunk in chunks:
+
+        normal_text += binary_to_text(chunk)
+
+    return normal_text
+
+print(encode(my_text1))
+print(decode("TVVHSVdBUmFhYWFhYWFhYQ=="))
