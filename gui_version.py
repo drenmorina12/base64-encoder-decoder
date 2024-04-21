@@ -25,8 +25,8 @@ def decoded_text_output():
 
 
 def encoded_text_output():
-    input_text.delete("1.0", END)
-    input_text.insert("1.0", decode(output_text.get("1.0", 'end-1c')))
+    output_text.delete("1.0", END)
+    output_text.insert("1.0", decode(input_text.get("1.0", 'end-1c')))
     
 # Buttons
 encode_button = Button(root, text="Encode", command=decoded_text_output)
