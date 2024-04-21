@@ -18,4 +18,14 @@ output_label.grid(row=0, column=2)
 output_text = Text(root, width=30, height=7)
 output_text.grid(row=1, column=2, padx=10, pady=10)
 
+def decrypted_text_output():
+    output_text.delete("1.0", END)
+    output_text.insert("1.0", encode(input_text.get("1.0", 'end-1c')))
+#     end-1c instead of END to avoid adding new line
+
+
+def encrypted_text_output():
+    input_text.delete("1.0", END)
+    input_text.insert("1.0", decode(output_text.get("1.0", 'end-1c')))
+
 mainloop()
