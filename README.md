@@ -1,9 +1,9 @@
 # base64-encoder-decoder
 
-# Universiteti i Prishtinës
-# Fakulteti i Inxhinierisë Kompjuterike dhe Softuerike 
+## Universiteti i Prishtinës
+## Fakulteti i Inxhinierisë Kompjuterike dhe Softuerike 
 
-# Implementimi i base64 enkoderit dhe dekoderit
+## Implementimi i base64 enkoderit dhe dekoderit
 
 
 
