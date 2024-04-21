@@ -38,18 +38,8 @@
   ### 2. Run the script using Python.
   `python gui_version.py`
 
-  ## Command-line Version
-  ### 1. Navigate to the project directory containing main.py script.
-  ### 2. Run the script using Python.  
-  `python base64_encoder_decoder.py`
-
 # Usage
   ## GUI Version
   ###  Enter the text you want to encode/decode in the input text area.
   ###  Click the "Encrypt" button to encode the text or the "Decrypt" button to decode the text.
   ###  The result will be displayed in the output text area.
-
-  ## Command-line Version
-  ###  Open a terminal or command prompt.
-  ###  Run the script and provide the text as a command-line argument.
-  `python main.py "Your text here"`

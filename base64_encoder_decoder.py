@@ -1,16 +1,16 @@
-import base64
+# import base64
 
-my_text = "Hello World"
+# my_text = "Hello World"
 
 
-def encode(text):
-    text = text.encode("ascii")
-    text_b64 = base64.b64encode(text)
-    return text_b64
+# def encode(text):
+#     text = text.encode("ascii")
+#     text_b64 = base64.b64encode(text)
+#     return text_b64
 
-def decode(text_b64):
-    text = base64.b64decode(text_b64)
-    return text
+# def decode(text_b64):
+#     text = base64.b64decode(text_b64)
+#     return text
 
 base64_table = {
     '000000': 'A', '000001': 'B', '000010': 'C', '000011': 'D',
@@ -107,6 +107,3 @@ def decode(base65_text):
         normal_text += binary_to_text(chunk)
 
     return normal_text
-
-print(encode(my_text1))
-print(decode("TVVHSVdBUmFhYWFhYWFhYQ=="))
