@@ -29,3 +29,10 @@ def encrypted_text_output():
     input_text.insert("1.0", decode(output_text.get("1.0", 'end-1c')))
 
 mainloop()
+
+# Buttons
+encrypt_button = Button(root, text="Encrypt", command=decrypted_text_output)
+encrypt_button.grid(row=2, column=0)
+
+decrypt_button = Button(root, text="Decrypt", command=encrypted_text_output)
+decrypt_button.grid(row=2, column=2)
