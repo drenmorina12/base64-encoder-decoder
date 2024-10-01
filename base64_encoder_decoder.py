@@ -1,13 +1,14 @@
 # import base64
-
+#
 # my_text = "Hello World"
-
-
+#
+#
 # def encode(text):
 #     text = text.encode("ascii")
 #     text_b64 = base64.b64encode(text)
 #     return text_b64
-
+#
+#
 # def decode(text_b64):
 #     text = base64.b64decode(text_b64)
 #     return text
@@ -33,22 +34,30 @@ base64_table = {
 
 inverse_base64_table = {value: key for key, value in base64_table.items()}
 
-my_text1 = "MUGIWARaaaaaaaaa"
+my_text1 = "ZHJlbm1vcmluYQo="
 
-#konvertimi i tekstit ne ASCII-vlere, konvertimi ne blloqe binare 8-biteshe
+
+# konvertimi i tekstit ne ASCII-vlere, konvertimi ne blloqe binare 8-biteshe
+
+
 def text_to_binary(text):
     binary_text = ''.join('{0:08b}'.format(ord(x), 'b') for x in text)
     return binary_text
 
-#ndarja e string-ut binare ne blloqe 6-biteshe
+
+# ndarja e string-ut binare ne blloqe 6-biteshe
+
+
 def chunk_binary_for_encoding(binary_string):
     chunks = []
-    chunk_size = 6
+    chunk_size = 6  # 0, 31
+
     for i in range(0, len(binary_string), chunk_size):
-        chunk = binary_string[i:i+chunk_size].ljust(chunk_size, '0')
+        chunk = binary_string[i:i + chunk_size].ljust(chunk_size, '0')
         chunks.append(chunk)
 
     return chunks
+
 
 def binary_to_text(binary_text):
     # Ndani tekstin binar në pjesë të vogla prej 8 bitësh
@@ -62,20 +71,29 @@ def binary_to_text(binary_text):
 
     return text
 
+
 def chunk_binary_for_decoding(binary_string):
     # Lista për të ruajtur blloqet e 8 bitësh
     chunks = []
     chunk_size = 8
     # Iterimi përmes vargut të dhënë binar
     for i in range(0, len(binary_string), chunk_size):
-        chunk = binary_string[i:i+chunk_size].ljust(chunk_size, '0')
+        chunk = binary_string[i:i + chunk_size].ljust(chunk_size, '0')
         chunks.append(chunk)
-        
+
     return chunks
 
-def encode(text):
+
+def encode(text, is_binary):
+    if not is_binary:
+        binary_text = text_to_binary(text)
+    else:
+        if len(text) < 8:
+            text = text.zfill(8)
+        binary_text = text
+
     base64_text = ""
-    binary_text = text_to_binary(text)
+
     chunks = chunk_binary_for_encoding(binary_text)
 
     for chunk in chunks:
@@ -88,6 +106,7 @@ def encode(text):
 
     return base64_text
 
+
 def decode(base65_text):
     normal_text = ""
     binary_values = []
@@ -99,11 +118,13 @@ def decode(base65_text):
         binary_values.append(inverse_base64_table[i])
 
     binary_text = ''.join(binary_values)
-    # print(binary_text)
     chunks = chunk_binary_for_decoding(binary_text)
 
     for chunk in chunks:
-
         normal_text += binary_to_text(chunk)
 
     return normal_text
+
+
+# print(encode(my_text1, True))
+print(decode(my_text1))
